@@ -11,9 +11,9 @@ import { CommonModule } from '@angular/common';
     TextCompComponent
   ],
   imports: [
-    CommonModule,
+    BrowserModule,
     FormsModule,
-    BrowserModule
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

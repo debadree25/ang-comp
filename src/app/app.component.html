@@ -1,2 +1,2 @@
-<app-text-comp value = 'text received from parent'></app-text-comp>
-<p>Received from child: {{received}}</p>
+<app-text-comp value="Some text" (emitter) = "get($event)" ></app-text-comp>
+<p>Received from child: {{data}}</p>
