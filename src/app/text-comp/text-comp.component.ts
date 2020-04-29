@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, ViewChild, ElementRef } from '@angular/core';
+import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'app-text-comp',
@@ -6,20 +7,41 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./text-comp.component.css']
 })
 export class TextCompComponent implements OnInit {
-  showInp:boolean;
-  text:string;
-  paraText:string;
+  showLabel: boolean;
+  @Input() value: string;
+  @Output() emitter = new EventEmitter();
+  focusableElement: ElementRef;
   constructor() {
-    this.showInp=false;
-    this.text="Some text here"
+    this.showLabel = true;
    }
 
+  @ViewChild('focusableElement', {static: false}) set content(content: ElementRef) {
+    if (content) { // initially setter gets called with undefined
+        this.focusableElement = content;
+    }
+  }
   ngOnInit() {
   }
-  displayInp() {
-    this.showInp=!this.showInp;
+
+  hideLabel() {
+    this.showLabel = false;
+    setTimeout(() => {
+      // Why do we need setTimeout?
+      // because showLabel once becomes false, the hidden input will become visible
+      // and that happens after this thread was completed.
+      // since setTimeout uses a new thread to execute it, we already have the element availble
+      if (this.focusableElement) {
+        this.focusableElement.nativeElement.focus();
+      }
+    }, 10);
   }
-  onInp($event:any) {
-    this.text=$event.target.value;
+  triggerParent($event?: any) {
+    if (this.showLabel) {
+      return;
+    }
+    console.log($event);
+    // since we are about to go back to parent component flow, we will set label to visible
+    this.showLabel = true;
+    this.emitter.emit(this.value);
   }
 }

@@ -1,6 +1,15 @@
-<div class="wrapper">
-    <p *ngIf="!showInp" (click)="displayInp()">
-        {{text}}
+<div
+    (click)="hideLabel()"
+    class="wrapper">
+    <p
+        *ngIf="showLabel">
+            {{value}}
     </p>
-    <input *ngIf="showInp" type="text" [placeholder]="text" (keyup)="onInp($event)" (focusout)="displayInp()">
+    <input
+        #focusableElement
+        *ngIf="!showLabel"
+        type="text"
+        [(ngModel)]='value'        
+        (keyup.enter)="triggerParent($event)"
+        (focusout)="triggerParent()">
 </div>
