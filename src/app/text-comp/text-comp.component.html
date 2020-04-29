@@ -1,6 +1,6 @@
 <div class="wrapper">
-    <p *ngIf="!showInp" (click)="displayInp()">
-        {{text}}
+    <p *ngIf="!showInp" (click)="trigger()">
+        {{value}}
     </p>
-    <input *ngIf="showInp" type="text" [placeholder]="text" (keyup)="onInp($event)" (focusout)="displayInp()">
+    <input #inp *ngIf="showInp" type="text" [placeholder]="value" [(ngModel)]="this.value" (focusout)="trigger()">
 </div>

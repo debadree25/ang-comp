@@ -1,12 +1,14 @@
 .wrapper {
     padding: 10px;
 }
-
+.wrapper p {
+    margin: 0px;
+}
 .wrapper input {
     width: 100%;
 }
 
 .wrapper:hover {
-    border: 2px dotted grey;
+    border: 1px dashed grey;
     border-radius: 8px;
 }

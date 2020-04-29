@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, ViewChild, ElementRef,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-text-comp',
@@ -7,19 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TextCompComponent implements OnInit {
   showInp:boolean;
-  text:string;
-  paraText:string;
+  @Input() value:string;
+  @Output() emitter = new EventEmitter();
+  @ViewChild('inp',{static:false}) inp: ElementRef;
   constructor() {
     this.showInp=false;
-    this.text="Some text here"
    }
 
   ngOnInit() {
   }
-  displayInp() {
+  trigger() {
     this.showInp=!this.showInp;
-  }
-  onInp($event:any) {
-    this.text=$event.target.value;
+    if(this.showInp) {
+      setTimeout(()=>{
+        this.inp.nativeElement.focus();
+      },0);
+    }
+    else {
+      this.emitter.emit(this.value);
+    }
   }
 }
