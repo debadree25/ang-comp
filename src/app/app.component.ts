@@ -7,8 +7,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ang-comp';
-  data:any;
-  get($event) {
-    this.data = $event;
+  result;
+  resultTextArea;
+  resultDate;
+  resultOption;
+  displayResult(event) {
+    // this might need to change, refer to console log to find out
+    this.result = event;
+  }
+  displayResultTextArea(event) {
+    this.resultTextArea = event;
+  }
+  displayResultDate(event) {
+    this.resultDate=event;
+  }
+  displayResultOption(event) {
+    this.resultOption=event;
   }
 }

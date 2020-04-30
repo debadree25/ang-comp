@@ -1,4 +1,3 @@
-  
 <div
 (click)="hideLabel()"
 class="wrapper">
@@ -9,9 +8,10 @@ class="wrapper">
 <input
     #focusableElement
     *ngIf="!showLabel"
-    type="text"
+    type="date"
     [(ngModel)]='value'        
     (keyup.enter)="triggerParent($event)"
     (focusout)="triggerParent()"
+    (ngModelChange)="triggerParent()"
     class="form-control">
 </div>

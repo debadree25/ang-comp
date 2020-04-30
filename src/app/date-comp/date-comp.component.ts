@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
-  selector: 'app-text-comp',
-  templateUrl: './text-comp.component.html',
-  styleUrls: ['./text-comp.component.css']
+  selector: 'app-date-comp',
+  templateUrl: './date-comp.component.html',
+  styleUrls: ['./date-comp.component.css']
 })
-export class TextCompComponent implements OnInit {
+export class DateCompComponent implements OnInit {
   showLabel: boolean;
   @Input() value: string;
   @Output() onComplete = new EventEmitter();

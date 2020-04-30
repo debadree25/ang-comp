@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
-  selector: 'app-text-comp',
-  templateUrl: './text-comp.component.html',
-  styleUrls: ['./text-comp.component.css']
+  selector: 'app-textarea-comp',
+  templateUrl: './textarea-comp.component.html',
+  styleUrls: ['./textarea-comp.component.css']
 })
-export class TextCompComponent implements OnInit {
+export class TextareaCompComponent implements OnInit {
   showLabel: boolean;
   @Input() value: string;
   @Output() onComplete = new EventEmitter();

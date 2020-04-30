@@ -6,12 +6,11 @@ class="wrapper">
     *ngIf="showLabel">
         {{value}}
 </p>
-<input
+<textarea
     #focusableElement
     *ngIf="!showLabel"
-    type="text"
     [(ngModel)]='value'        
     (keyup.enter)="triggerParent($event)"
     (focusout)="triggerParent()"
-    class="form-control">
+    class="form-control"></textarea>
 </div>
