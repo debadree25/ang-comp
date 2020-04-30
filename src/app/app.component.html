@@ -1,2 +1,2 @@
-<app-text-comp value = 'text received from parent'></app-text-comp>
-<p>Received from child: {{received}}</p>
+<app-text-comp (onComplete)='displayResult($event)' value = 'text received from parent'></app-text-comp>
+<p>Received from child: {{result}}</p>

@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, Output, ViewChild, ElementRef } from '@angular/core';
-import { EventEmitter } from 'protractor';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-text-comp',
@@ -9,7 +8,7 @@ import { EventEmitter } from 'protractor';
 export class TextCompComponent implements OnInit {
   showLabel: boolean;
   @Input() value: string;
-  @Output() emitter = new EventEmitter();
+  @Output() onComplete = new EventEmitter();
   focusableElement: ElementRef;
   constructor() {
     this.showLabel = true;
@@ -42,6 +41,6 @@ export class TextCompComponent implements OnInit {
     console.log($event);
     // since we are about to go back to parent component flow, we will set label to visible
     this.showLabel = true;
-    this.emitter.emit(this.value);
+    this.onComplete.emit(this.value);
   }
 }
