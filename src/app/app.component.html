@@ -15,4 +15,8 @@
         <h3>Received from child: {{resultOption}}</h3>
         <app-dropdown-comp [options]="['a','b','c']" (onComplete)='displayResultOption($event)'></app-dropdown-comp>
     </div>
+    <div class="card">
+        <h3>Received from child: {{resultOption}}</h3>
+        <app-timepicker value='foan' (onComplete)='displayResultOption($event)'></app-timepicker>
+    </div>
 </div>

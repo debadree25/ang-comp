@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, ElementRef, EventEmitter, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'app-date-comp',
-  templateUrl: './date-comp.component.html',
-  styleUrls: ['./date-comp.component.css']
+  selector: 'app-timepicker',
+  templateUrl: './timepicker.component.html',
+  styleUrls: ['./timepicker.component.css']
 })
-export class DateCompComponent implements OnInit {
+export class TimepickerComponent implements OnInit {
   showLabel: boolean;
   @Input() value: string;
   @Output() onComplete = new EventEmitter();
@@ -23,15 +23,16 @@ export class DateCompComponent implements OnInit {
   }
 
   hideLabel() {
+    console.log('here im focused');
     this.showLabel = false;
     setTimeout(() => {
       // Why do we need setTimeout?
       // because showLabel once becomes false, the hidden input will become visible
       // and that happens after this thread was completed.
       // since setTimeout uses a new thread to execute it, we already have the element availble
-      if (this.focusableElement) {
-        this.focusableElement.nativeElement.focus();
-      }
+      // if (this.focusableElement) {
+      //   this.focusableElement.nativeElement.focus();
+      // }
     }, 10);
   }
   triggerParent($event?: any) {
@@ -42,12 +43,5 @@ export class DateCompComponent implements OnInit {
     // since we are about to go back to parent component flow, we will set label to visible
     this.showLabel = true;
     this.onComplete.emit(this.value);
-  }
-
-  closeNgbPicker(event, ngbDatePicker) {
-    if (event.target.offsetParent == null
-        || event.target.offsetParent.nodeName !== 'NGB-DATEPICKER') {
-          ngbDatePicker.close();
-    }
   }
 }

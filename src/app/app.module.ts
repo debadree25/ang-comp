@@ -8,20 +8,24 @@ import { CommonModule } from '@angular/common';
 import { TextareaCompComponent } from './textarea-comp/textarea-comp.component';
 import { DropdownCompComponent } from './dropdown-comp/dropdown-comp.component';
 import { DateCompComponent } from './date-comp/date-comp.component';
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+
+import { TimepickerComponent } from './timepicker/timepicker.component';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 @NgModule({
   declarations: [
     AppComponent,
     TextCompComponent,
     TextareaCompComponent,
     DropdownCompComponent,
-    DateCompComponent
+    DateCompComponent,
+    TimepickerComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     CommonModule,
-    NgbModule
+    // NgbModule,
+    TimepickerModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

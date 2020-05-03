@@ -19,9 +19,9 @@ export class AppComponent {
     this.resultTextArea = event;
   }
   displayResultDate(event) {
-    this.resultDate=event;
+    this.resultDate = event;
   }
   displayResultOption(event) {
-    this.resultOption=event;
+    this.resultOption = event;
   }
 }

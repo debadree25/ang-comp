@@ -1,0 +1,16 @@
+.wrapper {
+    padding: 10px;
+    border: 1px solid #ffffff00;
+}
+.wrapper a {
+    margin: 0px;
+    color: black;
+}
+.wrapper input {
+    width: 100%;
+}
+
+.wrapper:hover {
+    border: 1px dashed grey;
+    border-radius: 8px;
+}
