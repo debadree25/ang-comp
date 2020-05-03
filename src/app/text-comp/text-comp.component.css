@@ -1,5 +1,6 @@
 .wrapper {
     padding: 10px;
+    border: 1px solid #ffffff00;
 }
 .wrapper p {
     margin: 0px;

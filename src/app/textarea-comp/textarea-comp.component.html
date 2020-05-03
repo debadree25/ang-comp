@@ -1,16 +1,7 @@
-  
-<div
-(click)="hideLabel()"
-class="wrapper">
-<p
-    *ngIf="showLabel">
+<div (click)="hideLabel()" class="wrapper">
+    <a (focus)='hideLabel()' href="" style="text-decoration: none; color:black" [hidden]="!showLabel">
         {{value}}
-</p>
-<textarea
-    #focusableElement
-    *ngIf="!showLabel"
-    [(ngModel)]='value'        
-    (keyup.enter)="triggerParent($event)"
-    (focusout)="triggerParent()"
-    class="form-control"></textarea>
+    </a>
+    <textarea #focusableElement *ngIf="!showLabel" [(ngModel)]='value' (keyup.enter)="triggerParent($event)"
+        (focusout)="triggerParent()" class="form-control"></textarea>
 </div>

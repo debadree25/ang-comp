@@ -12,11 +12,11 @@ export class DateCompComponent implements OnInit {
   focusableElement: ElementRef;
   constructor() {
     this.showLabel = true;
-   }
+  }
 
-  @ViewChild('focusableElement', {static: false}) set content(content: ElementRef) {
+  @ViewChild('focusableElement', { static: false }) set content(content: ElementRef) {
     if (content) { // initially setter gets called with undefined
-        this.focusableElement = content;
+      this.focusableElement = content;
     }
   }
   ngOnInit() {
@@ -46,8 +46,8 @@ export class DateCompComponent implements OnInit {
 
   closeNgbPicker(event, ngbDatePicker) {
     if (event.target.offsetParent == null
-        || event.target.offsetParent.nodeName !== 'NGB-DATEPICKER') {
-          ngbDatePicker.close();
+      || event.target.offsetParent.nodeName !== 'NGB-DATEPICKER') {
+      ngbDatePicker.close();
     }
   }
 }

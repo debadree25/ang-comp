@@ -11,6 +11,7 @@ export class AppComponent {
   resultTextArea;
   resultDate;
   resultOption;
+  resultTime;
   displayResult(event) {
     // this might need to change, refer to console log to find out
     this.result = event;
@@ -23,5 +24,8 @@ export class AppComponent {
   }
   displayResultOption(event) {
     this.resultOption = event;
+  }
+  displayTimeOption(event) {
+    this.resultTime = event;
   }
 }

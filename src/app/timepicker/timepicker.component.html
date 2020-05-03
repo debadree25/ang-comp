@@ -1,15 +1,9 @@
-<div
-    (click)="hideLabel()"
-    class="wrapper">
-    <a 
-        (focus)='hideLabel()'
-        href=""
-        style="text-decoration: none;"
-        [hidden]="!showLabel">
-            {{value}}
+<div (click)="hideLabel()" class="wrapper">
+    <a (focus)='hideLabel()' href="" style="text-decoration: none;" [hidden]="!showLabel">
+        {{value}}
     </a>
-   
-        <!-- <div 
+
+    <!-- <div 
 
             (focusout)="triggerParent()"
             #focusableElement>
@@ -26,12 +20,7 @@
         [(ngModel)]='value'
         (focusout)="triggerParent()"
         ></ngb-timepicker> -->
-        <div>
-            <timepicker
-            (focusout)="triggerParent()"
-            #focusableElement
-            [hidden]="showLabel"
-            [(ngModel)]='value'
-            ></timepicker>
-        </div>
+    <div>
+        <input type="time" class="form-control" (focusout)="triggerParent()" #focusableElement [hidden]="showLabel" [(ngModel)]='value'>
+    </div>
 </div>

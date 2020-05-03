@@ -1,11 +1,10 @@
-<div
-(click)="hideLabel()"
-class="wrapper">
-<p
-    *ngIf="showLabel">
+<div (click)="hideLabel()" class="wrapper">
+    <a (focus)='hideLabel()' href="" style="text-decoration: none;color:black" [hidden]="!showLabel">
         {{label}}
-</p>
+    </a>
 
-<select class="form-control" [name]="label" id="" *ngIf="!showLabel" [(ngModel)]="label" (focusout)="triggerParent($event)" (ngModelChange)="triggerParent($event)">
-    <option *ngFor="let opt of options" [value]="opt">{{opt}}</option>
-</select>
+    <select class="form-control" [name]="label" id="" *ngIf="!showLabel" [(ngModel)]="label"
+        (focusout)="triggerParent($event)" (ngModelChange)="triggerParent($event)">
+        <option *ngFor="let opt of options" [value]="opt">{{opt}}</option>
+    </select>
+</div>

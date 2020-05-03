@@ -6,23 +6,23 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef }
   styleUrls: ['./dropdown-comp.component.css']
 })
 export class DropdownCompComponent implements OnInit {
-  showLabel:boolean;
-  label:string;
+  showLabel: boolean;
+  label: string;
   focusableElement: ElementRef;
-  @Input() options:string[];
+  @Input() options: string[];
   @Output() onComplete = new EventEmitter();
   constructor() {
-    this.showLabel=true;
+    this.showLabel = true;
   }
   ngOnInit() {
-    this.label=this.options[0];
+    this.label = this.options[0];
   }
   hideLabel() {
     this.showLabel = false;
   }
   optionClick(val) {
-    this.label=val;
-    this.showLabel=true;
+    this.label = val;
+    this.showLabel = true;
   }
   triggerParent($event?: any) {
     if (this.showLabel) {
