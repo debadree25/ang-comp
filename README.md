@@ -1,6 +1,6 @@
 # AngComp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.24.
+This is a simple project consisting some Angular Components which can be easily integated in your angular projects
 
 ## Development server
 
