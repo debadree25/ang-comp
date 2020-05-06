@@ -11,6 +11,7 @@ import { DateCompComponent } from './date-comp/date-comp.component';
 
 import { TimepickerComponent } from './timepicker/timepicker.component';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { MeetingsComponent } from './meetings/meetings.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,8 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
     TextareaCompComponent,
     DropdownCompComponent,
     DateCompComponent,
-    TimepickerComponent
+    TimepickerComponent,
+    MeetingsComponent
   ],
   imports: [
     BrowserModule,
