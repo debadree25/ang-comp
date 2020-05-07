@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { TextCompComponent } from './text-comp/text-comp.component';
@@ -26,7 +27,7 @@ import { MeetingsComponent } from './meetings/meetings.component';
     BrowserModule,
     FormsModule,
     CommonModule,
-    // NgbModule,
+    NgbModule,
     TimepickerModule.forRoot(),
   ],
   providers: [],
