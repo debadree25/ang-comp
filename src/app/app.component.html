@@ -9,14 +9,15 @@
     </div>
     <div class="card">
         <h3>Received from child: {{resultDate}}</h3>
-        <app-date-comp (onComplete)='displayResultDate($event)' value = '2020-04-30'></app-date-comp>
+        <app-date-comp (onComplete)='displayResultDate($event)' value = '2022-04-30'></app-date-comp>
     </div>
     <div class="card">
         <h3>Received from child: {{resultOption}}</h3>
-        <app-dropdown-comp [options]="['a','b','c']" (onComplete)='displayResultOption($event)'></app-dropdown-comp>
+        <app-dropdown-comp [selectedIndex]='2' [options]="dropdownOptions" (onComplete)='displayResultOption($event)'></app-dropdown-comp>
     </div>
     <div class="card">
-        <h3>Received from child: {{resultTime}}</h3>
-        <app-timepicker value='foan' (onComplete)='displayTimeOption($event)'></app-timepicker>
+        <h3>Received from child: {{resultTime}}{{resultTime}}</h3>
+        <!-- <app-timepicker value='12:33' (onComplete)='displayTimeOption($event)'></app-timepicker> -->
+        <app-timepicker value='12:33' (onComplete)='resultTime = $event'></app-timepicker>
     </div>
 </div>

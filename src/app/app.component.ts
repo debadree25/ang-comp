@@ -12,6 +12,19 @@ export class AppComponent {
   resultDate;
   resultOption;
   resultTime;
+  dropdownOptions = [{
+    label: 'a',
+    value: 11
+  },
+  {
+    label: 'b',
+    value: 2
+  },
+  {
+    label: 'c',
+    value: 34
+  }];
+  // dropdownOptions = ['a', 'b', 'c'];
   displayResult(event) {
     // this might need to change, refer to console log to find out
     this.result = event;
@@ -23,8 +36,10 @@ export class AppComponent {
     this.resultDate = event;
   }
   displayResultOption(event) {
+    console.log(event);
     this.resultOption = event;
   }
+
   displayTimeOption(event) {
     this.resultTime = event;
   }

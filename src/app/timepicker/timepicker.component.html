@@ -1,26 +1,21 @@
-<div (click)="hideLabel()" class="wrapper">
-    <a (focus)='hideLabel()' href="" style="text-decoration: none;" [hidden]="!showLabel">
+<div
+    (click)="hideLabel()"
+    class="wrapper">
+    <a
+        (focus)='hideLabel()'
+        href=""
+        style="text-decoration: none;"
+        [hidden]="!showLabel">
         {{value}}
     </a>
 
-    <!-- <div 
-
-            (focusout)="triggerParent()"
-            #focusableElement>
-            <input
-                *ngIf="!showLabel"
-                type="text"
-                [(ngModel)]='value'        
-                (keyup.enter)="triggerParent($event)"
-                class="form-control">
-        </div> -->
-    <!-- <ngb-timepicker
-        #focusableElement
-        [hidden]="showLabel"
-        [(ngModel)]='value'
-        (focusout)="triggerParent()"
-        ></ngb-timepicker> -->
     <div>
-        <input type="time" class="form-control" (focusout)="triggerParent()" #focusableElement [hidden]="showLabel" [(ngModel)]='value'>
+        <input
+            type="time"
+            class="form-control"
+            (focusout)="triggerParent()"
+            #focusableElement
+            [hidden]="showLabel"
+            [(ngModel)]='value'>
     </div>
 </div>

@@ -15,7 +15,7 @@ export class TextareaCompComponent implements OnInit {
   }
 
   @ViewChild('focusableElement', { static: false }) set content(content: ElementRef) {
-    if (content) { // initially setter gets called with undefined
+    if (content) {
       this.focusableElement = content;
     }
   }
@@ -25,10 +25,6 @@ export class TextareaCompComponent implements OnInit {
   hideLabel() {
     this.showLabel = false;
     setTimeout(() => {
-      // Why do we need setTimeout?
-      // because showLabel once becomes false, the hidden input will become visible
-      // and that happens after this thread was completed.
-      // since setTimeout uses a new thread to execute it, we already have the element availble
       if (this.focusableElement) {
         this.focusableElement.nativeElement.focus();
       }
@@ -38,8 +34,6 @@ export class TextareaCompComponent implements OnInit {
     if (this.showLabel) {
       return;
     }
-    console.log($event);
-    // since we are about to go back to parent component flow, we will set label to visible
     this.showLabel = true;
     this.onComplete.emit(this.value);
   }

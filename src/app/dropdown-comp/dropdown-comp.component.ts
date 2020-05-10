@@ -7,31 +7,54 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef }
 })
 export class DropdownCompComponent implements OnInit {
   showLabel: boolean;
-  label: string;
-  focusableElement: ElementRef;
-  @Input() options: string[];
+  valueMap;
+  value: number;
+  @Input() options: {label: string, value: number}[];
+  @Input() selectedIndex: number;
+  @Input() selected: {label: string, value: number};
   @Output() onComplete = new EventEmitter();
+  focusableElement: ElementRef;
+  @ViewChild('focusableElement', { static: false }) set content(content: ElementRef) {
+    if (content) {
+      this.focusableElement = content;
+    }
+  }
   constructor() {
     this.showLabel = true;
   }
+
   ngOnInit() {
-    this.label = this.options[0];
+    this.valueMap = {};
+    this.options.forEach(element => {
+      this.valueMap[element.value] = element.label;
+    });
+
+    if (this.selectedIndex) {
+      if (this.selectedIndex >= 0 && this.selectedIndex < this.options.length) {
+        this.selected = this.options[this.selectedIndex];
+      }
+    }
+    if (!this.selected) {
+      this.selected = this.options[0];
+    }
+    this.value = this.selected.value;
   }
+
   hideLabel() {
     this.showLabel = false;
+    setTimeout(() => {
+      if (this.focusableElement) {
+        this.focusableElement.nativeElement.focus();
+      }
+    }, 10);
   }
-  optionClick(val) {
-    this.label = val;
-    this.showLabel = true;
-  }
+
   triggerParent($event?: any) {
     if (this.showLabel) {
       return;
     }
-    console.log($event);
-    // since we are about to go back to parent component flow, we will set label to visible
     this.showLabel = true;
-    this.onComplete.emit(this.label);
-    console.log(this.showLabel);
+    this.onComplete.emit(this.value);
   }
 }
+
