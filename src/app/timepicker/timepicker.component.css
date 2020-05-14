@@ -14,3 +14,12 @@
     border: 1px dashed grey;
     border-radius: 8px;
 }
+
+.picker {
+    display: flex;
+    width: 30%;
+}
+
+.picker input {
+    margin: 5px;
+}

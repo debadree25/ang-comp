@@ -31,7 +31,7 @@ export class DateCompComponent implements OnInit {
 
   formatLabel(val: string) {
     const d = new Date(val);
-    return this.formatNumber(d.getMonth()) + '/' + this.formatNumber(d.getDate()) + '/' + d.getFullYear();
+    return this.formatNumber(d.getMonth() + 1) + '/' + this.formatNumber(d.getDate()) + '/' + d.getFullYear();
   }
   formatNumber(num): string {
     if (num >= 10) {

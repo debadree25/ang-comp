@@ -17,6 +17,11 @@
             #focusableElement
             [hidden]="showLabel"
             [(ngModel)]='value'> -->
-        <ngb-timepicker [(ngModel)]='newData' (openChange)='checkEvent($event)' (focusout)='triggerParent()'></ngb-timepicker>
+        <!-- <ngb-timepicker [(ngModel)]='newData' (openChange)='checkEvent($event)' (focusout)='triggerParent()'></ngb-timepicker> -->
+        <div class="picker">
+            <input type="number" max="12" min="1">
+            <input type="number" max="59" min="0">
+            <input type="text">
+        </div>
     </div>
 </div>
