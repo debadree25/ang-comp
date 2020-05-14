@@ -9,6 +9,7 @@ export class TimepickerComponent implements OnInit {
   showLabel: boolean;
   @Input() value: string;
   @Output() onComplete = new EventEmitter();
+  newData;
   focusableElement: ElementRef;
   constructor() {
     this.showLabel = true;
@@ -22,6 +23,9 @@ export class TimepickerComponent implements OnInit {
   ngOnInit() {
   }
 
+  checkEvent(event) {
+    console.log(event);
+  }
   hideLabel() {
     this.showLabel = false;
     setTimeout(() => {

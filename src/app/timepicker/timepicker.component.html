@@ -10,12 +10,13 @@
     </a>
 
     <div>
-        <input
+        <!-- <input
             type="time"
             class="form-control"
             (focusout)="triggerParent()"
             #focusableElement
             [hidden]="showLabel"
-            [(ngModel)]='value'>
+            [(ngModel)]='value'> -->
+        <ngb-timepicker [(ngModel)]='newData' (openChange)='checkEvent($event)' (focusout)='triggerParent()'></ngb-timepicker>
     </div>
 </div>

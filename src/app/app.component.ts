@@ -37,7 +37,7 @@ export class AppComponent {
   }
   displayResultOption(event) {
     console.log(event);
-    this.resultOption = event;
+    this.resultOption = event.label;
   }
 
   displayTimeOption(event) {

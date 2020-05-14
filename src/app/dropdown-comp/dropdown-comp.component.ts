@@ -7,11 +7,9 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef }
 })
 export class DropdownCompComponent implements OnInit {
   showLabel: boolean;
-  valueMap;
-  value: number;
-  @Input() options: {label: string, value: number}[];
+  @Input() options: {label: string, value: any}[];
   @Input() selectedIndex: number;
-  @Input() selected: {label: string, value: number};
+  @Input() selected: {label: string, value: any};
   @Output() onComplete = new EventEmitter();
   focusableElement: ElementRef;
   @ViewChild('focusableElement', { static: false }) set content(content: ElementRef) {
@@ -24,20 +22,22 @@ export class DropdownCompComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.valueMap = {};
-    this.options.forEach(element => {
-      this.valueMap[element.value] = element.label;
-    });
-
     if (this.selectedIndex) {
-      if (this.selectedIndex >= 0 && this.selectedIndex < this.options.length) {
-        this.selected = this.options[this.selectedIndex];
+      if (this.selectedIndex < 0 && this.selectedIndex >= this.options.length) {
+        this.selectedIndex = 0;
       }
+    } else {
+      this.selectedIndex = 0;
     }
-    if (!this.selected) {
-      this.selected = this.options[0];
+    if (this.selected) {
+      let count = 0;
+      this.options.forEach(element => {
+        if (element.value === this.selected.value) {
+          this.selectedIndex = count;
+        }
+        count++;
+      });
     }
-    this.value = this.selected.value;
   }
 
   hideLabel() {
@@ -54,7 +54,7 @@ export class DropdownCompComponent implements OnInit {
       return;
     }
     this.showLabel = true;
-    this.onComplete.emit(this.value);
+    this.onComplete.emit(this.options[this.selectedIndex]);
   }
 }
 

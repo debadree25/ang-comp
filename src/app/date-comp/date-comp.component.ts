@@ -7,6 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef }
 })
 export class DateCompComponent implements OnInit {
   showLabel: boolean;
+  label: string;
   @Input() value: string;
   @Output() onComplete = new EventEmitter();
   focusableElement: ElementRef;
@@ -20,8 +21,24 @@ export class DateCompComponent implements OnInit {
     }
   }
   ngOnInit() {
+    if (!this.value || this.value === '') {
+      return;
+    }
+    const dt = new Date(this.value);
+    this.value = this.value.substr(0, 10);
+    this.label = this.formatLabel(this.value);
   }
 
+  formatLabel(val: string) {
+    const d = new Date(val);
+    return this.formatNumber(d.getMonth()) + '/' + this.formatNumber(d.getDate()) + '/' + d.getFullYear();
+  }
+  formatNumber(num): string {
+    if (num >= 10) {
+      return '' + num;
+    }
+    return 0 + '' + num;
+  }
   hideLabel() {
     this.showLabel = false;
     setTimeout(() => {
@@ -34,8 +51,9 @@ export class DateCompComponent implements OnInit {
     if (this.showLabel) {
       return;
     }
-    console.log($event);
+    console.log(this.value);
+    this.label = this.formatLabel(this.value);
     this.showLabel = true;
-    this.onComplete.emit(this.value);
+    this.onComplete.emit(this.label);
   }
 }
