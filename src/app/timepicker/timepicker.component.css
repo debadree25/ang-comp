@@ -20,6 +20,6 @@
     width: 30%;
 }
 
-.picker input {
+.picker input,button {
     margin: 5px;
 }

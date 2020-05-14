@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, ElementRef, EventEmitter, ViewChild } from '@angular/core';
+import { formatNumber } from '@angular/common';
 
 @Component({
   selector: 'app-timepicker',
@@ -9,7 +10,9 @@ export class TimepickerComponent implements OnInit {
   showLabel: boolean;
   @Input() value: string;
   @Output() onComplete = new EventEmitter();
-  newData;
+  hh;
+  mm;
+  timing = "AM";
   focusableElement: ElementRef;
   constructor() {
     this.showLabel = true;
@@ -21,6 +24,10 @@ export class TimepickerComponent implements OnInit {
     }
   }
   ngOnInit() {
+  }
+
+  fliptime() {
+    this.timing = (this.timing === 'AM') ? 'PM' : 'AM';
   }
 
   checkEvent(event) {
@@ -39,6 +46,8 @@ export class TimepickerComponent implements OnInit {
       return;
     }
     this.showLabel = true;
+    this.value = ((this.hh >= 10) ? '' + this.hh : '0' + this.hh) + ' : ' + ((this.mm >= 10) ? '' + this.mm : '0' + this.mm)
+      + ' ' + this.timing;
     this.onComplete.emit(this.value);
   }
 }

@@ -18,10 +18,10 @@
             [hidden]="showLabel"
             [(ngModel)]='value'> -->
         <!-- <ngb-timepicker [(ngModel)]='newData' (openChange)='checkEvent($event)' (focusout)='triggerParent()'></ngb-timepicker> -->
-        <div class="picker">
-            <input type="number" max="12" min="1">
-            <input type="number" max="59" min="0">
-            <input type="text">
+        <div class="picker" #focusableElement (focusout)="triggerParent()"  *ngIf="!showLabel">
+            <input type="number" class="form-control" maxlength="2" inputmode="numeric" [(ngModel)]="hh">
+            <input type="number" class="form-control" maxlength="2" inputmode="numeric" [(ngModel)]="mm">
+            <button class="btn btn-primary" (click)="fliptime()">{{timing}}</button>
         </div>
     </div>
 </div>
