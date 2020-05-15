@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, ElementRef, EventEmitter, ViewChild } from '@angular/core';
-import { formatNumber } from '@angular/common';
 
 @Component({
   selector: 'app-timepicker',
@@ -49,6 +48,9 @@ export class TimepickerComponent implements OnInit {
   }
 
   hideLabel() {
+    if (!this.showLabel) {
+      return;
+    }
     this.showLabel = false;
     setTimeout(() => {
       if (this.focusableElement) {

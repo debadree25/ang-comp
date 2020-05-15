@@ -10,18 +10,37 @@
     </a>
 
     <div>
-        <!-- <input
-            type="time"
-            class="form-control"
+        <div
+            class="picker"
             (focusout)="triggerParent()"
-            #focusableElement
-            [hidden]="showLabel"
-            [(ngModel)]='value'> -->
-        <!-- <ngb-timepicker [(ngModel)]='newData' (openChange)='checkEvent($event)' (focusout)='triggerParent()'></ngb-timepicker> -->
-        <div class="picker" #focusableElement (focusout)="triggerParent()"  *ngIf="!showLabel">
-            <input type="number" (focus)='changeCount(1); $event.target.select()' (blur)='changeCount(-1)' class="hm form-control" maxlength="2" min='1' max='12' [(ngModel)]="hh">
-            <input type="number" (focus)='changeCount(1); $event.target.select()' (blur)='changeCount(-1)' class="hm form-control" maxlength="2" min='0' max='59' inputmode="numeric" [(ngModel)]="mm">
-            <button class="btn btn-primary" (focus)='changeCount(1)' (blur)='changeCount(-1)' (click)="fliptime()">{{timing}}</button>
+            *ngIf="!showLabel">
+            <input
+                type="number"
+                #focusableElement
+                (focus)='changeCount(1); $event.target.select()'
+                (blur)='changeCount(-1)'
+                class="hm form-control"
+                maxlength="2"
+                min='1'
+                max='12'
+                [(ngModel)]="hh">
+            <input
+                type="number"
+                (focus)='changeCount(1); $event.target.select()'
+                (blur)='changeCount(-1)'
+                class="hm form-control"
+                maxlength="2"
+                min='0'
+                max='59'
+                inputmode="numeric"
+                [(ngModel)]="mm">
+            <button
+                class="btn btn-primary"
+                (focus)='changeCount(1)'
+                (blur)='changeCount(-1)'
+                (click)="fliptime()">
+                    {{timing}}
+                </button>
         </div>
     </div>
 </div>
