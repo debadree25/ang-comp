@@ -23,3 +23,7 @@
 .picker input,button {
     margin: 5px;
 }
+
+.hm {
+    min-width: 60px;
+}
