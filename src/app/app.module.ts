@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { TextCompComponent } from './text-comp/text-comp.component';
@@ -13,6 +13,8 @@ import { DateCompComponent } from './date-comp/date-comp.component';
 import { TimepickerComponent } from './timepicker/timepicker.component';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { MeetingsComponent } from './meetings/meetings.component';
+
+import { NgbDateCustomParserFormatter } from './date-comp/custom-date-formatter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,8 @@ import { MeetingsComponent } from './meetings/meetings.component';
     NgbModule,
     TimepickerModule.forRoot(),
   ],
-  providers: [],
+  providers: [{ provide: NgbDateParserFormatter, useClass: NgbDateCustomParserFormatter }],
+  // providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

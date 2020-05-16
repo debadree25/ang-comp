@@ -1,17 +1,31 @@
-<div (click)="hideLabel()" class="wrapper">
+<div (click)="hideLabel()" id='datepickerroot' class="wrapper">
     <a
         (focus)='hideLabel()'
+        (click)='hideLabel()'
         href=""
         style="text-decoration: none; color:black"
         [hidden]="!showLabel">
         {{label}}
     </a>
-    <input
-        #focusableElement
+        <div
         *ngIf="!showLabel"
-        type="date"
-        [(ngModel)]='value'
-        (keyup.enter)="triggerParent($event)"
-        (focusout)="triggerParent()"
-        class="form-control">
+        class="ih-input ih-date">
+        <input
+            #focusableElement
+            [autoClose]='true'
+            (focus)='storeReference(ds)'
+            (focusout)='doSomethingFocus(ds)'
+            (dateSelect)='doSomethingNew(ds)'
+            readonly
+            class="ih-form-control"
+            placeholder="mm-dd-yyyy"
+            name="dpstart"
+            (click)="handleInputClick(ds, $event);"
+            (document:click)="closeNgbPicker($event, ds)"
+            [(ngModel)]="ngbdata"
+            ngbDatepicker
+            #ds="ngbDatepicker">
+        <span class="highlight"></span>
+        <span class="bar"></span>
+    </div>
 </div>
