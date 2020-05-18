@@ -333,3 +333,16 @@ h1, h2, h3, h4, h5, h6 {
 .pending {
     background-color: #a0a0a0;
 }
+
+.filters {
+    display:flex;
+    flex-direction: row-reverse;
+}
+
+.filters div {
+    padding: 6px;
+}
+
+.filters label {
+    padding:2px;
+}

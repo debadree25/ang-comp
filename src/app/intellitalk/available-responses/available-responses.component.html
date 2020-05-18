@@ -1,9 +1,19 @@
 <div class="ar-header-filter">
     <b class="mr-2">Filter Avaibility Responses</b>
-    <select class="form-control form-control-sm d-inline-block">
-        <option value="">Select</option>
-        <option value="">Request Reschedule</option>
-    </select>
+    <div class="filters">
+        <div>
+            <input type="checkbox" id="accepted">
+            <label for="accepted">Accepted</label>
+        </div>
+        <div>
+            <input type="checkbox" id="modify">
+            <label for="modify">Reschedule</label>
+        </div>
+        <div>
+            <input type="checkbox" id="rejected">
+            <label for="rejected">Rejected</label>
+        </div>
+    </div>
 </div>
 
 <div class="av-responses">
@@ -17,8 +27,7 @@
             <div class="col">
                 <div class="detail-desc h-100">
                     <div class="w-100">
-                        <span class="badge d-inline-block"
-                            [ngClass]="resp.extras.class">
+                        <span class="badge d-inline-block" [ngClass]="resp.extras.class">
                             {{resp.RespondedByName}}
                         </span>
                         <div class="w-100">
@@ -28,7 +37,8 @@
                                     <div class="organiser">
                                         <img [src]="resp.Meeting.Organizer.ProfilePic">
                                         <div>
-                                            <h6 class="text-info mb-2">Organised by: {{resp.Meeting.Organizer.AttendeeName}}</h6>
+                                            <h6 class="text-info mb-2">Organised by:
+                                                {{resp.Meeting.Organizer.AttendeeName}}</h6>
                                             <div>
                                                 <i class="fa fa-cl fa-clock-o mr-1"></i>
                                                 {{resp.Meeting.DateFormatted}}
@@ -36,17 +46,16 @@
                                         </div>
                                     </div>
                                     <div class="attendees">
-                                        <h6 class="attendees-title">Attendees ({{resp.Meeting.NonOrganizers.length}})</h6>
+                                        <h6 class="attendees-title">Attendees ({{resp.Meeting.NonOrganizers.length}})
+                                        </h6>
 
                                         <div class="inner">
                                             <div class="attendee" *ngFor='let at of resp.Meeting.NonOrganizers'>
-                                                <img [src] = "at.ProfilePic" alt="">
+                                                <img [src]="at.ProfilePic" alt="">
                                                 <div>
                                                     <h6>
                                                         <span class="attendee-name">{{at.AttendeeName}}</span>
-                                                        <span
-                                                            [ngClass]='at.class'
-                                                            class="badge meenting-status">
+                                                        <span [ngClass]='at.class' class="badge meenting-status">
                                                             <!-- <i class="fa fa-check-circle-o mr-1"></i> -->
                                                             <span class="mr-1">{{at.ResponseText}}</span>
                                                         </span>
@@ -58,7 +67,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -68,9 +77,8 @@
                                     <h6>{{resp.Meeting.Title}}</h6>
                                 </div>
                             </ng-template>
-                            <a href="javascript:;" class="text-decoration-underline"
-                                [ngbPopover]="popContent" placement="bottom"
-                                [popoverTitle]="popTitle">"{{resp.Meeting.Title}}"</a>
+                            <a href="javascript:;" class="text-decoration-underline" [ngbPopover]="popContent"
+                                placement="bottom" [popoverTitle]="popTitle">"{{resp.Meeting.Title}}"</a>
                             <!-- {{attendee.timeChange}} -->
                         </div>
                         <div id="id1" style="display:none;">
@@ -78,18 +86,11 @@
                         </div>
                         <div>
                             <span>
-                                <i
-                                    *ngIf='resp.Note'
-                                    class="fa fa-clipboard m-1"
-                                    ngbPopover="{{resp.Note}}"
-                                    triggers="mouseenter:mouseleave"
-                                    popoverTitle="Note by attendee">
+                                <i *ngIf='resp.Note' class="fa fa-clipboard m-1" ngbPopover="{{resp.Note}}"
+                                    triggers="mouseenter:mouseleave" popoverTitle="Note by attendee">
                                 </i>
-                                <i
-                                    *ngIf='resp.SuggestedTime'
-                                    class="fa fa-user-clock m-1"
-                                    ngbPopover="{{resp.SuggestedTimeFormatted}}"
-                                    triggers="mouseenter:mouseleave"
+                                <i *ngIf='resp.SuggestedTime' class="fa fa-user-clock m-1"
+                                    ngbPopover="{{resp.SuggestedTimeFormatted}}" triggers="mouseenter:mouseleave"
                                     popoverTitle="Suggested time">
                                 </i>
                             </span>
@@ -100,8 +101,7 @@
             </div>
             <div class="col-auto" *ngIf="resp.ResponseType!='Accepted'">
                 <div class="h-100 vertically-centered">
-                    <input type="button" class="btn mb-1 pending badge-danger"
-                        value="Modify Meeting" />
+                    <input type="button" class="btn mb-1 pending badge-danger" value="Modify Meeting" />
                     <input type="button" class="btn btn-outline-danger" value="Cancel Meeting" />
                 </div>
             </div>
@@ -140,8 +140,7 @@
                                                 <div>
                                                     <h6>
                                                         <span class="attendee-name">Albert Jones</span>
-                                                        <span
-                                                            class="badge badge-primary meenting-status">
+                                                        <span class="badge badge-primary meenting-status">
                                                             <i class="fa fa-check-circle-o mr-1"></i>
                                                             <span class="mr-1">Accepted</span>
                                                         </span>
@@ -159,8 +158,7 @@
                                                 <div>
                                                     <h6>
                                                         <span class="attendee-name">John Doe</span>
-                                                        <span
-                                                            class="badge badge-danger meenting-status">
+                                                        <span class="badge badge-danger meenting-status">
                                                             <i class="fa fa-times-circle-o mr-1"></i>
                                                             <span class="mr-1">Rejected</span>
                                                         </span>
@@ -178,8 +176,7 @@
                                                 <div>
                                                     <h6>
                                                         <span class="attendee-name">Albert Jones</span>
-                                                        <span
-                                                            class="badge badge-warning meenting-status">
+                                                        <span class="badge badge-warning meenting-status">
                                                             <i class="fa fa-refresh mr-1"></i>
                                                             <span class="mr-1">Req. Reschedule</span>
                                                         </span>
@@ -200,9 +197,8 @@
                                     <h6>Diet Review</h6>
                                 </div>
                             </ng-template>
-                            <a href="javascript:;" class="text-decoration-underline"
-                                [ngbPopover]="popContent" placement="bottom"
-                                [popoverTitle]="popTitle">"{{attendee.meetTopic}}"</a>
+                            <a href="javascript:;" class="text-decoration-underline" [ngbPopover]="popContent"
+                                placement="bottom" [popoverTitle]="popTitle">"{{attendee.meetTopic}}"</a>
                             {{attendee.timeChange}}
                         </div>
                         <div id="id1" style="display:none;">
