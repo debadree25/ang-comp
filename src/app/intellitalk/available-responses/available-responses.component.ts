@@ -10,7 +10,10 @@ import { MeetingAvailabilityResponse } from '../models/MeetingAvailabilityRespon
 export class AvailableResponsesComponent implements OnInit {
   tab = 'meet';
   attendees: Attendee[];
+RELOAD_COUNT = 1;
+paginatorMessage;
 earliestFetchedResponseTime: string;
+showLoading;
 classMap = {
   RequestedReschedule: 'badge-warning',
   Rejected: 'badge-danger',
@@ -67,6 +70,9 @@ responses: MeetingAvailabilityResponse[];
   }
 
   ngOnInit() {
+    this.showLoading = false;
+    this.paginatorMessage = 'Show earlier responses';
+    this.responses = [];
     this.earliestFetchedResponseTime = new Date().toUTCString();
     this.fetchData();
     console.log('available response component onInit');
@@ -82,11 +88,7 @@ responses: MeetingAvailabilityResponse[];
     console.log(res2);
   }
 
-  async getResponses(lastTime?: string) {
-    if (!lastTime) {
-      lastTime = this.earliestFetchedResponseTime;
-    }
-    const res = await this.rest.getAvailabilityResponse({EarlierThanTime: lastTime, NumOfRecords: 10});
+  formatAvailableResponses(res: MeetingAvailabilityResponse[]): MeetingAvailabilityResponse[] {
     res.forEach(element => {
       element.Meeting.NonOrganizers.forEach(ele => {
         ele.ProfilePic = this.rest.imageUrl + ele.ProfilePic;
@@ -119,14 +121,33 @@ responses: MeetingAvailabilityResponse[];
       + ', ' + this.getFormattedTime(element.Meeting.StartTime)
       + ' - ' + this.getFormattedTime(element.Meeting.EndTime);
     });
-
-    this.responses = res;
-    console.log(res);
+    return res;
+  }
+  async getResponses(lastTime?: string) {
+    if (!lastTime) {
+      lastTime = this.earliestFetchedResponseTime;
+    }
+    try {
+      this.showLoading = true;
+      let res = await this.rest.getAvailabilityResponse({EarlierThanTime: lastTime, NumOfRecords: this.RELOAD_COUNT});
+      res = this.formatAvailableResponses(res);
+      if (res.length === 0) {
+        this.paginatorMessage = 'No earlier responses available';
+      } else {
+        this.responses.push(...res);
+      }
+    } catch (err) {
+      this.paginatorMessage = 'Failed to load data, please try again';
+    } finally {
+      this.showLoading = false;
+    }
   }
 
   async showEarlierResponses() {
-    const res = await this.rest.getAvailabilityResponse({EarlierThanTime: this.earliestFetchedResponseTime, NumOfRecords: 3});
-    console.log(res);
+    if (this.showLoading) {
+      return;
+    }
+    this.getResponses();
   }
 
   getFormattedTime(d: string): string {

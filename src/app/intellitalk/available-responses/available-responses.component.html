@@ -224,5 +224,8 @@
 </div>
 
 <div (click)='showEarlierResponses()' class="show-earlier-conv">
-    <span>Show earlier conversations</span>
+    <span>{{paginatorMessage}}</span>
+    <div *ngIf='showLoading' class="spinner-border spinner-border-sm" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
 </div>
