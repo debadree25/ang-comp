@@ -1,0 +1,228 @@
+<div class="ar-header-filter">
+    <b class="mr-2">Filter Avaibility Responses</b>
+    <select class="form-control form-control-sm d-inline-block">
+        <option value="">Select</option>
+        <option value="">Request Reschedule</option>
+    </select>
+</div>
+
+<div class="av-responses">
+    <div class="av-response" *ngFor="let resp of responses">
+        <div class="row">
+            <div class="col-auto">
+                <div class="h-100">
+                    <img [src]="resp.RespondedByProfilePic" alt="">
+                </div>
+            </div>
+            <div class="col">
+                <div class="detail-desc h-100">
+                    <div class="w-100">
+                        <span class="badge d-inline-block"
+                            [ngClass]="resp.extras.class">
+                            {{resp.RespondedByName}}
+                        </span>
+                        <div class="w-100">
+                            {{resp.extras.message}}
+                            <ng-template #popContent>
+                                <div class="popover-body">
+                                    <div class="organiser">
+                                        <img [src]="resp.Meeting.Organizer.ProfilePic">
+                                        <div>
+                                            <h6 class="text-info mb-2">Organised by: {{resp.Meeting.Organizer.AttendeeName}}</h6>
+                                            <div>
+                                                <i class="fa fa-cl fa-clock-o mr-1"></i>
+                                                {{resp.Meeting.DateFormatted}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="attendees">
+                                        <h6 class="attendees-title">Attendees ({{resp.Meeting.NonOrganizers.length}})</h6>
+
+                                        <div class="inner">
+                                            <div class="attendee" *ngFor='let at of resp.Meeting.NonOrganizers'>
+                                                <img [src] = "at.ProfilePic" alt="">
+                                                <div>
+                                                    <h6>
+                                                        <span class="attendee-name">{{at.AttendeeName}}</span>
+                                                        <span
+                                                            [ngClass]='at.class'
+                                                            class="badge meenting-status">
+                                                            <!-- <i class="fa fa-check-circle-o mr-1"></i> -->
+                                                            <span class="mr-1">{{at.ResponseText}}</span>
+                                                        </span>
+                                                    </h6>
+                                                    <div *ngIf='at.ResponseType'>
+                                                        <small>
+                                                            <i class="fa fa-clock-o"></i>
+                                                            {{at.ResponseText}} on {{at.RespondedOnFormatted}}</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <ng-template #popTitle>
+                                <div class="meeting-title">
+                                    <h6>{{resp.Meeting.Title}}</h6>
+                                </div>
+                            </ng-template>
+                            <a href="javascript:;" class="text-decoration-underline"
+                                [ngbPopover]="popContent" placement="bottom"
+                                [popoverTitle]="popTitle">"{{resp.Meeting.Title}}"</a>
+                            <!-- {{attendee.timeChange}} -->
+                        </div>
+                        <div id="id1" style="display:none;">
+                            sdfs
+                        </div>
+                        <div>
+                            <span>
+                                <i
+                                    *ngIf='resp.Note'
+                                    class="fa fa-clipboard m-1"
+                                    ngbPopover="{{resp.Note}}"
+                                    triggers="mouseenter:mouseleave"
+                                    popoverTitle="Note by attendee">
+                                </i>
+                                <i
+                                    *ngIf='resp.SuggestedTime'
+                                    class="fa fa-user-clock m-1"
+                                    ngbPopover="{{resp.SuggestedTimeFormatted}}"
+                                    triggers="mouseenter:mouseleave"
+                                    popoverTitle="Suggested time">
+                                </i>
+                            </span>
+                        </div>
+                    </div>
+                    <small><i class="fa fa-clock-o mr-1"></i> <span>{{resp.RespondedOnFormatted}}</span></small>
+                </div>
+            </div>
+            <div class="col-auto" *ngIf="resp.ResponseType!='Accepted'">
+                <div class="h-100 vertically-centered">
+                    <input type="button" class="btn mb-1 pending badge-danger"
+                        value="Modify Meeting" />
+                    <input type="button" class="btn btn-outline-danger" value="Cancel Meeting" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="av-response" *ngFor="let attendee of attendees">
+        <div class="row">
+            <div class="col-auto">
+                <div class="h-100">
+                    <img src="../content/imgs/profile-pic.jpg" alt="">
+                </div>
+            </div>
+            <div class="col">
+                <div class="detail-desc h-100">
+                    <div class="w-100">
+                        <span class="badge d-inline-block"
+                            [ngClass]="{'badge-warning': attendee.reqType=='change','badge-danger': attendee.reqType =='cancel','badge-primary': attendee.reqType=='accept'}">{{attendee.name}}</span>
+                        <div class="w-100">
+                            {{attendee.requestMsg}}
+                            <ng-template #popContent>
+                                <div class="popover-body">
+                                    <div class="organiser">
+                                        <img src="../content/imgs/profile-pic.jpg">
+                                        <div>
+                                            <h6 class="text-info mb-2">Organised by: John Smith</h6>
+                                            <div><i class="fa fa-cl fa-clock-o mr-1"></i> Apr 28, 2020,
+                                                4:00:00 PM - 6:30:00 PM</div>
+                                        </div>
+                                    </div>
+                                    <div class="attendees">
+                                        <h6 class="attendees-title">Attendees (3)</h6>
+
+                                        <div class="inner">
+                                            <div class="attendee">
+                                                <img src="../content/imgs/profile-pic.jpg" alt="">
+                                                <div>
+                                                    <h6>
+                                                        <span class="attendee-name">Albert Jones</span>
+                                                        <span
+                                                            class="badge badge-primary meenting-status">
+                                                            <i class="fa fa-check-circle-o mr-1"></i>
+                                                            <span class="mr-1">Accepted</span>
+                                                        </span>
+                                                    </h6>
+                                                    <div>
+                                                        <small><i class="fa fa-clock-o"></i> Accepted on
+                                                            May
+                                                            18, 2020</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="attendee">
+                                                <img src="../content/imgs/profile-pic.jpg" alt="">
+                                                <div>
+                                                    <h6>
+                                                        <span class="attendee-name">John Doe</span>
+                                                        <span
+                                                            class="badge badge-danger meenting-status">
+                                                            <i class="fa fa-times-circle-o mr-1"></i>
+                                                            <span class="mr-1">Rejected</span>
+                                                        </span>
+                                                    </h6>
+                                                    <div>
+                                                        <small><i class="fa fa-clock-o"></i> Rejected on
+                                                            May
+                                                            18, 2020</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="attendee">
+                                                <img src="../content/imgs/profile-pic.jpg" alt="">
+                                                <div>
+                                                    <h6>
+                                                        <span class="attendee-name">Albert Jones</span>
+                                                        <span
+                                                            class="badge badge-warning meenting-status">
+                                                            <i class="fa fa-refresh mr-1"></i>
+                                                            <span class="mr-1">Req. Reschedule</span>
+                                                        </span>
+                                                    </h6>
+                                                    <div>
+                                                        <small><i class="fa fa-clock-o"></i> Req.
+                                                            reschedule
+                                                            on May 18, 2020 </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <ng-template #popTitle>
+                                <div class="meeting-title">
+                                    <h6>Diet Review</h6>
+                                </div>
+                            </ng-template>
+                            <a href="javascript:;" class="text-decoration-underline"
+                                [ngbPopover]="popContent" placement="bottom"
+                                [popoverTitle]="popTitle">"{{attendee.meetTopic}}"</a>
+                            {{attendee.timeChange}}
+                        </div>
+                        <div id="id1" style="display:none;">
+                        </div>
+                    </div>
+                    <small><i class="fa fa-clock-o mr-1"></i> <span>{{attendee.date}}</span></small>
+                </div>
+            </div>
+            <div class="col-auto" *ngIf="attendee.reqType!='accept'">
+                <div class="h-100 vertically-centered">
+                    <input type="button" class="btn mb-1"
+                        [ngClass]="{'btn-warning': attendee.reqType=='change', 'btn-danger': attendee.reqType =='cancel'}"
+                        value="Modify Meeting" />
+                    <input type="button" class="btn btn-outline-secondary" value="Cancel Meeting" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div (click)='showEarlierResponses()' class="show-earlier-conv">
+    <span>Show earlier conversations</span>
+</div>

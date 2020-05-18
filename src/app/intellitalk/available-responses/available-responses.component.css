@@ -1,0 +1,335 @@
+.widget-shadow {
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    background: #fff;
+    padding: 1rem;
+    -webkit-box-shadow: 0 0 13px #a2cacc;
+    box-shadow: 0 0 13px #a2cacc;
+}
+
+.outlined {
+    border: 1.5px solid #00bcdb!important;
+}
+
+.widget-header {
+    border-bottom: .009em solid #ccc;
+    padding-bottom: .7em;
+    padding-top: .7em;
+}
+
+.header {
+    font-size: 116%;
+    color: #898989;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.table-sticky {
+    border: 1px solid #eee;
+    border-top: 0;
+    text-align: center;
+    margin-bottom: 4px;
+    background: #fff;
+    display: table;
+    table-layout: fixed;
+}
+
+.table-sticky thead th {
+    background: #a2cacb !important;
+    font-weight: 700;
+    color: #fff;
+    font-size: 92%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: -2px;
+    z-index: 2;
+    letter-spacing: 1px;
+}
+
+.table-sticky .table-cell, .table-sticky td, .table-sticky th {
+    vertical-align: middle !important;
+    border: 1px solid #eee;
+    word-break: break-word;
+}
+
+.table tbody {
+    max-height: 400px!important;
+    overflow-y: auto;
+}
+
+.table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.show-earlier-conv {
+    background: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+    padding: .8rem .8rem .7rem;
+    font-size: .9rem;
+    text-align: center;
+}
+
+.show-earlier-conv span {
+    color: #dd4b39;
+    opacity: .6;
+    cursor: pointer;
+    transition: opacity .25s ease;
+}
+
+.show-earlier-conv span:hover {
+    opacity: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.display-none {
+    display: none;
+}
+
+.text-decoration-underline {
+    text-decoration: underline;
+}
+
+.tab-header {
+    background-color: #f1f1f1;
+    width: 100%;
+    height: 4.6em;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: .5px;
+    padding-top: 6px;
+}
+
+.tab-header li a {
+    color: #898989 !important;
+    margin: 1rem;
+    display: inline-block;
+    padding: 0 4px;
+    cursor: pointer;
+    border-radius: 0 !important;
+}
+
+.tab-header .active {
+    background: none !important;
+    color: #a2cacc !important;
+    border-bottom: 3px solid #a2cacc;
+    height: 38px;
+}
+
+.vertically-centered {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.notification-count {
+    display: inline-block;
+    min-width: 15px;
+    height: 15px;
+    line-height: 15px;
+    border-radius: 50%;
+    font-size: 10px;
+    text-align: center;
+    padding: 0 2px;
+    top: -7px;
+}
+
+.ar-header-filter {
+    text-align: right;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.ar-header-filter b {
+    position: relative;
+    top: -1px;
+    letter-spacing: 1px;
+}
+
+.ar-header-filter .form-control {
+    width: 200px;
+}
+
+.av-responses {
+    position: relative;
+    width: 100%;
+}
+
+/*.av-responses .alert {
+        margin-bottom: 10px;
+    }
+
+        .av-responses .alert:last-child {
+            margin-bottom: 0;
+        }*/
+
+.av-responses .av-response {
+    border-bottom: 1px solid #d2dce4;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.av-responses .av-response:last-child {
+    margin-bottom: 0;
+    /*
+            padding-bottom: 0;
+            border-bottom: none;
+*/
+}
+
+.av-responses .av-response .badge {
+    padding: 6px 10px 6px 10px;
+    font-size: 85%;
+    margin-bottom: 5px;
+}
+
+.av-responses .av-response .detail-desc {
+    letter-spacing: 1px;
+}
+
+.av-responses .av-response img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}
+
+.av-responses .av-response .btn {
+    padding: 8px 20px;
+    letter-spacing: 1px;
+}
+
+.av-responses .av-response small {
+    display: block;
+    margin-top: 10px;
+    color: #888;
+}
+
+.popover {
+    min-width: 400px;
+    max-width: 500px;
+}
+
+.popover-body {
+    padding: 5px;
+}
+
+.popover-body .meeting-title {
+    width: 100%;
+    padding: 1px 0px 7px 0;
+}
+
+.popover-body .meeting-title h6 {
+    letter-spacing: .75px;
+    font-size: 1.04rem;
+    text-align: center;
+}
+
+.popover-body .organiser {
+    display: flex;
+    background: #eee;
+    padding: 12px 15px 10px 15px;
+}
+
+.popover-body .organiser img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.popover-body .organiser div h6 {
+    letter-spacing: .7px;
+}
+
+.popover-body .attendees {
+    position: relative;
+    width: 100%;
+    padding: 6px 8px 8px 8px;
+    background: #fef7f7;
+}
+
+.popover-body .attendees .attendees-title {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 2px dashed #e5e5e5;
+}
+
+.popover-body .attendees .inner {
+    width: 100%;
+    max-height: 190px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.popover-body .attendees .attendee {
+    display: flex;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 8px 12px;
+}
+
+.popover-body .attendees .attendee:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.popover-body .attendees .attendee .dropdown-divider {
+    margin-bottom: 3px;
+}
+
+.popover-body .attendees .attendee img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.popover-body .attendees .attendee div {
+    width: 100%;
+}
+
+.popover-body .attendees .attendee div h6 {
+    font-size: .9rem;
+    letter-spacing: 1px;
+}
+
+/*
+                    .popover-body .attendees .attendee div h6 span.attendee-name {
+                        margin-bottom: 0px;
+                    }
+*/
+
+.popover-body .attendees .attendee div span.meenting-status {
+    font-size: 80%;
+    letter-spacing: .7px;
+    padding: 3px 5px;
+    font-weight: 500;
+}
+
+.popover-body .attendees .attendee div small {
+    display: block;
+    margin-top: 8px;
+    color: #666;
+}
+
+.pending {
+    background-color: #a0a0a0;
+}

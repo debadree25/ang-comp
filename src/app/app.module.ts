@@ -15,6 +15,11 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { MeetingsComponent } from './meetings/meetings.component';
 
 import { NgbDateCustomParserFormatter } from './date-comp/custom-date-formatter';
+import { RouterModule } from '@angular/router';
+import { IntellitalkModule } from './intellitalk/intellitalk.module';
+import { IntellitalkComponent } from './intellitalk/intellitalk.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RestService } from './services/rest.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,8 +36,26 @@ import { NgbDateCustomParserFormatter } from './date-comp/custom-date-formatter'
     CommonModule,
     NgbModule,
     TimepickerModule.forRoot(),
+    IntellitalkModule,
+    HttpClientModule,
+    RouterModule.forRoot([
+      {
+        path: 'lazy',
+        loadChildren: () => import('./intellitalk/intellitalk.module').then(m => m.IntellitalkModule)
+      },
+      {
+        path: 'intellitalk',
+        component: IntellitalkComponent
+      },
+      {
+        path: '',
+        component: AppComponent
+      }])
   ],
-  providers: [{ provide: NgbDateParserFormatter, useClass: NgbDateCustomParserFormatter }],
+  providers: [
+    RestService,
+    { provide: NgbDateParserFormatter, useClass: NgbDateCustomParserFormatter }
+  ],
   // providers: [],
   bootstrap: [AppComponent]
 })
