@@ -26,8 +26,9 @@ export class IntellitalkComponent implements OnInit {
 
   async getCount() {
     const res = await this.rest.getUnreadResponseCount();
-    this.unviewedCount = res.unviewedkMeetingAvailabilityResponseCount;
-    console.log('restCount updated');
+    console.log(res);
+    this.unviewedCount = res.UnviewedkMeetingAvailabilityResponseCount;
+    console.log(this.unviewedCount);
   }
 
   changeTab() {
