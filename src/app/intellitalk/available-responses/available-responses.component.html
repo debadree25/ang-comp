@@ -99,10 +99,16 @@
                     <small><i class="fa fa-clock-o mr-1"></i> <span>{{resp.RespondedOnFormatted}}</span></small>
                 </div>
             </div>
-            <div class="col-auto" *ngIf="resp.ResponseType!='Accepted'">
+            <div class="col-auto"
+                *ngIf="resp.ResponseType!='Accepted' && resp.Meeting.Status!='Cancelled' && resp.Meeting.Status!='Ended'">
                 <div class="h-100 vertically-centered">
                     <input type="button" class="btn mb-1 pending badge-danger" value="Modify Meeting" />
                     <input type="button" class="btn btn-outline-danger" value="Cancel Meeting" />
+                </div>
+            </div>
+            <div class="col-auto" *ngIf="resp.Meeting.Status=='Cancelled' || resp.Meeting.Status=='Ended'">
+                <div class="h-100 vertically-centered">
+                    Meeting has <span *ngIf="resp.Meeting.Status=='Cancelled'">been</span> {{resp.Meeting.Status}}
                 </div>
             </div>
         </div>
@@ -221,7 +227,7 @@
 
 <div (click)='showEarlierResponses()' class="show-earlier-conv">
     <span>{{paginatorMessage}}</span>
-    <div *ngIf='showLoading' class="spinner-border spinner-border-sm" role="status">
+    <div *ngIf='showLoading' class="spinner-border spinner-border-sm" role="status" style="color:#00bcdb;">
         <span class="sr-only">Loading...</span>
     </div>
 </div>

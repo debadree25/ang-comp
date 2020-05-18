@@ -10,29 +10,29 @@ import { MeetingAvailabilityResponse } from '../models/MeetingAvailabilityRespon
 export class AvailableResponsesComponent implements OnInit {
   tab = 'meet';
   attendees: Attendee[];
-RELOAD_COUNT = 1;
-paginatorMessage;
-earliestFetchedResponseTime: string;
-showLoading;
-classMap = {
-  RequestedReschedule: 'badge-warning',
-  Rejected: 'badge-danger',
-  Accepted: 'badge-primary'
-};
+  RELOAD_COUNT = 1;
+  paginatorMessage;
+  earliestFetchedResponseTime: string;
+  showLoading;
+  classMap = {
+    RequestedReschedule: 'badge-warning',
+    Rejected: 'badge-danger',
+    Accepted: 'badge-primary'
+  };
 
-messageMap = {
-  RequestedReschedule: 'has requested to reschedule the meeting',
-  Rejected: 'has rejected the meeting',
-  Accepted: 'has accepted the meeting'
-};
+  messageMap = {
+    RequestedReschedule: 'has requested to reschedule the meeting',
+    Rejected: 'has rejected the meeting',
+    Accepted: 'has accepted the meeting'
+  };
 
-responseTextMap = {
-  RequestedReschedule: 'Req. Reschedule',
-  Rejected: 'Rejected',
-  Accepted: 'Accepted'
-};
+  responseTextMap = {
+    RequestedReschedule: 'Req. Reschedule',
+    Rejected: 'Rejected',
+    Accepted: 'Accepted'
+  };
 
-responses: MeetingAvailabilityResponse[];
+  responses: MeetingAvailabilityResponse[];
   constructor(private rest: RestService) {
     this.attendees = [];
     // this.attendees = [
@@ -110,17 +110,18 @@ responses: MeetingAvailabilityResponse[];
 
       if (element.SuggestedTime) {
         element.SuggestedTimeFormatted =
-        this.getFormattedDate(element.SuggestedTime)
-        + ', ' + this.getFormattedTime(element.SuggestedTime);
+          this.getFormattedDate(element.SuggestedTime)
+          + ', ' + this.getFormattedTime(element.SuggestedTime);
       }
       element.RespondedOnFormatted =
-      this.getFormattedDate(element.RespondedOn)
-      + ', ' + this.getFormattedTime(element.RespondedOn);
+        this.getFormattedDate(element.RespondedOn)
+        + ', ' + this.getFormattedTime(element.RespondedOn);
       element.Meeting.DateFormatted =
-      this.getFormattedDate(element.Meeting.StartTime)
-      + ', ' + this.getFormattedTime(element.Meeting.StartTime)
-      + ' - ' + this.getFormattedTime(element.Meeting.EndTime);
+        this.getFormattedDate(element.Meeting.StartTime)
+        + ', ' + this.getFormattedTime(element.Meeting.StartTime)
+        + ' - ' + this.getFormattedTime(element.Meeting.EndTime);
     });
+    console.log(res);
     return res;
   }
   async getResponses(lastTime?: string) {
@@ -129,7 +130,7 @@ responses: MeetingAvailabilityResponse[];
     }
     try {
       this.showLoading = true;
-      let res = await this.rest.getAvailabilityResponse({EarlierThanTime: lastTime, NumOfRecords: this.RELOAD_COUNT});
+      let res = await this.rest.getAvailabilityResponse({ EarlierThanTime: lastTime, NumOfRecords: this.RELOAD_COUNT });
       res = this.formatAvailableResponses(res);
       if (res.length === 0) {
         this.paginatorMessage = 'No earlier responses available';
